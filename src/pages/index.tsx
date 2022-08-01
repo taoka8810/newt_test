@@ -21,12 +21,15 @@ const Home: NextPage = () => {
   useEffect(() => {
     fetch();
   }, []);
-  console.log("test");
   return (
     <>
       <h1>Newtのサンプルです</h1>
       {data?.map((item: any) => (
-        <Card title={item.title} thumbnail={item.thumbnail.src} key={item.id} />
+        <Card
+          title={item.title}
+          thumbnail={item.thumbnail.src}
+          key={item._id}
+        />
       ))}
     </>
   );
