@@ -21,6 +21,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     fetch();
   }, []);
+  console.log("test");
   return (
     <>
       <h1>Newtのサンプルです</h1>
