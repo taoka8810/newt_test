@@ -9,10 +9,10 @@ const Home: NextPage = () => {
   const [data, setData] = useState<any>();
   const fetch = async () => {
     const data = await axios.get(
-      "https://test-365825.cdn.newt.so/v1/newt-719380/article",
+      "https://test-365825.cdn.newt.so/v1/ts-827418/post",
       {
         headers: {
-          Authorization: `Bearer ${process.env.API_KEY}`,
+          Authorization: `Bearer B5XFdvwiA3E5qOrpMHkLzs811_T8n0ap2GXhSqYhGe8`,
         },
       }
     );
