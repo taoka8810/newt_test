@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       "https://test-365825.cdn.newt.so/v1/newt-719380/article",
       {
         headers: {
-          Authorization: `Bearer ${process.env.NEWT_TOKEN}`,
+          Authorization: `Bearer ${process.env.API_KEY}`,
         },
       }
     );
