@@ -7,19 +7,19 @@ import { useRouter } from "next/router";
 import { useAsync } from "react-use";
 
 // api
-import { getArticle } from "../../api/Article";
+import { getCategoryArticle } from "../../api/Article";
 
 // component
 import { Card } from "../../components/card";
 
 const Category: NextPage = () => {
   const router = useRouter();
-  const [data, setData] = useState<any>();
+  const [article, setArticle] = useState<any>();
 
   useAsync(async () => {
     if (typeof router.query.type === "string") {
-      const data = await getArticle(router.query.type);
-      setData(data);
+      const data = await getCategoryArticle(router.query.type);
+      setArticle(data);
     }
   }, [router.query.type]);
 
@@ -28,7 +28,7 @@ const Category: NextPage = () => {
       <h1>Newtのサンプルです</h1>
       <h2>カテゴリーページ：{router.query.type}</h2>
       <div className="p-category__contents">
-        {data?.map((item: any) => (
+        {article?.map((item: any) => (
           <Card
             title={item.title}
             category={item.category}

@@ -11,26 +11,38 @@ import { Card } from "../components/card";
 
 // api
 import { getAllArticle } from "../api/Article";
+import { getAllTag } from "../api/Tag";
 
 // interface
 import { ArticleCategoryType } from "../interfaces";
 
 const Home: NextPage = () => {
   const router = useRouter();
-  const [data, setData] = useState<any>();
+  const [article, setArticle] = useState<any>();
+  const [tag, setTag] = useState<any>();
 
   // 記事データ全件取得
   useAsync(async () => {
-    const data = await getAllArticle();
-    setData(data);
+    const article = await getAllArticle();
+    const tag = await getAllTag();
+    setArticle(article);
+    setTag(tag);
   });
 
   const clickCategoryButton = (category: ArticleCategoryType) => {
     router.push({
-      pathname: "/category",
+      pathname: `/category`,
       query: { type: category },
     });
   };
+
+  const clickTagButton = (tag: string) => {
+    router.push({
+      pathname: "/tag",
+      query: { type: tag },
+    });
+  };
+
   return (
     <HomeStyle>
       <h1>Newtのサンプルです</h1>
@@ -59,7 +71,7 @@ const Home: NextPage = () => {
         </button>
       </div>
       <div className="p-home__contents">
-        {data?.map((item: any) => (
+        {article?.map((item: any) => (
           <Card
             title={item.title}
             category={item.category}
@@ -70,7 +82,17 @@ const Home: NextPage = () => {
       </div>
       <details className="p-home__tag">
         <summary>タグ</summary>
-        <p>ここにタグ一覧を表示する</p>
+        <div className="p-home__tag-list">
+          {tag?.map((item: any) => (
+            <span
+              className="p-home__tag-item"
+              key={item._id}
+              onClick={() => clickTagButton(item.slug)}
+            >
+              {item.name}
+            </span>
+          ))}
+        </div>
       </details>
       <details className="p-home__month">
         <summary>月別</summary>
@@ -101,5 +123,11 @@ const HomeStyle = styled.div`
     margin: 30px 0;
     padding: 15px;
     border: 1px solid black;
+  }
+  .p-home__tag-list {
+    margin-top: 15px;
+  }
+  .p-home__tag-item {
+    margin: 5px;
   }
 `;
