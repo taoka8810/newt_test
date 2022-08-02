@@ -5,7 +5,7 @@ export const getAllArticle = async () => {
     "https://test-365825.cdn.newt.so/v1/ts-827418/post",
     {
       headers: {
-        Authorization: `Bearer B5XFdvwiA3E5qOrpMHkLzs811_T8n0ap2GXhSqYhGe8`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
       },
     }
   );
@@ -17,7 +17,7 @@ export const getArticle = async (category: string) => {
     `https://test-365825.cdn.newt.so/v1/ts-827418/post?category=${category}`,
     {
       headers: {
-        Authorization: `Bearer B5XFdvwiA3E5qOrpMHkLzs811_T8n0ap2GXhSqYhGe8`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
       },
     }
   );
