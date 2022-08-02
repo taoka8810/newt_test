@@ -31,7 +31,6 @@ const Home: NextPage = () => {
       query: { type: category },
     });
   };
-  console.log(data);
   return (
     <HomeStyle>
       <h1>Newtのサンプルです</h1>
