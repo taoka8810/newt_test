@@ -31,10 +31,13 @@ const Home: NextPage = () => {
       query: { type: category },
     });
   };
-
+  console.log(data);
   return (
     <HomeStyle>
       <h1>Newtのサンプルです</h1>
+      <a href="https://app.newt.so/test-365825/app/ts-827418">
+        管理画面はこちら
+      </a>
       <h2>一覧ページ</h2>
       <div className="p-home__category-button-wrapper">
         <button
@@ -66,6 +69,14 @@ const Home: NextPage = () => {
           />
         ))}
       </div>
+      <details className="p-home__tag">
+        <summary>タグ</summary>
+        <p>ここにタグ一覧を表示する</p>
+      </details>
+      <details className="p-home__month">
+        <summary>月別</summary>
+        <p>月別の記事数を表示する</p>
+      </details>
     </HomeStyle>
   );
 };
@@ -85,5 +96,11 @@ const HomeStyle = styled.div`
     height: 30px;
     width: 100px;
     margin-right: 10px;
+  }
+  .p-home__tag,
+  .p-home__month {
+    margin: 30px 0;
+    padding: 15px;
+    border: 1px solid black;
   }
 `;
